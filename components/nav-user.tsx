@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { signOut } from "@/lib/auth-client"
 import {
   IconCreditCard,
   IconDotsVertical,
@@ -34,12 +33,14 @@ import {
 
 export function NavUser({
   user,
+  onSignOut,
 }: {
   user: {
     name: string
     email: string
     avatar: string
   }
+  onSignOut?: () => void
 }) {
   const { isMobile } = useSidebar()
   const router = useRouter()
@@ -48,8 +49,11 @@ export function NavUser({
   const handleSignOut = async () => {
     setIsSigningOut(true)
     try {
-      await signOut()
-      router.push("/")
+      if (onSignOut) {
+        onSignOut()
+      } else {
+        router.push("/")
+      }
     } catch (error) {
       console.error("Sign out error:", error)
     } finally {

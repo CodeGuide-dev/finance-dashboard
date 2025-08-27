@@ -1,6 +1,6 @@
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
 
-export const user = pgTable("user", {
+const user = pgTable("user", {
     id: text("id").primaryKey(),
     name: text("name").notNull(),
     email: text("email").notNull().unique(),
@@ -16,7 +16,7 @@ export const user = pgTable("user", {
         .notNull(),
 });
 
-export const session = pgTable("session", {
+const session = pgTable("session", {
     id: text("id").primaryKey(),
     expiresAt: timestamp("expires_at").notNull(),
     token: text("token").notNull().unique(),
@@ -29,7 +29,7 @@ export const session = pgTable("session", {
         .references(() => user.id, { onDelete: "cascade" }),
 });
 
-export const account = pgTable("account", {
+const account = pgTable("account", {
     id: text("id").primaryKey(),
     accountId: text("account_id").notNull(),
     providerId: text("provider_id").notNull(),
@@ -47,7 +47,7 @@ export const account = pgTable("account", {
     updatedAt: timestamp("updated_at").notNull(),
 });
 
-export const verification = pgTable("verification", {
+const verification = pgTable("verification", {
     id: text("id").primaryKey(),
     identifier: text("identifier").notNull(),
     value: text("value").notNull(),
@@ -59,3 +59,11 @@ export const verification = pgTable("verification", {
         () => /* @__PURE__ */ new Date(),
     ),
 });
+
+
+export {
+    user,
+    session,
+    account,
+    verification
+}
