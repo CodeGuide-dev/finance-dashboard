@@ -124,7 +124,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Financial Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Income</CardTitle>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
       <ChartAreaInteractive />
 
       {/* Quick Actions */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {quickActions.map((action) => (
           <Card key={action.title} className="hover:bg-muted/50 transition-colors">
             <Link href={action.href}>
@@ -259,7 +259,7 @@ export default function DashboardPage() {
       </Card>
 
       {/* Financial Overview */}
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Assets Overview</CardTitle>
